@@ -1,15 +1,13 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const DatePad = () => {
-  const date = new Date();
-
+const AreaPad = () => {
   const { viewStyle, textStyle } = styles;
 
   return (
     <View style={viewStyle}>
       <Text style={textStyle}>
-        {date.toLocaleTimeString()}
+        Kelantan Selatan
       </Text>
     </View>
   );
@@ -17,11 +15,12 @@ const DatePad = () => {
 
 const styles = {
   viewStyle: {
-    backgroundColor: '#555',
+    backgroundColor: 'blue',
   },
   textStyle: {
+    fontSize: 15,
     textAlign: 'center',
-  }
+  },
 };
 
-export default DatePad;
+export default AreaPad;

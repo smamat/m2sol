@@ -4,10 +4,10 @@ import { View, Text } from 'react-native';
 const DatePad = () => {
   const date = new Date();
 
-  const { viewStyle, textStyle } = styles;
+  const { container, textStyle } = styles;
 
   return (
-    <View style={viewStyle}>
+    <View style={container}>
       <Text style={textStyle}>
         {date.toLocaleTimeString()}
       </Text>
@@ -16,8 +16,8 @@ const DatePad = () => {
 };
 
 const styles = {
-  viewStyle: {
-    backgroundColor: '#555',
+  container: {
+    backgroundColor: 'lime',
   },
   textStyle: {
     textAlign: 'center',

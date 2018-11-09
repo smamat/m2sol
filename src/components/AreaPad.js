@@ -2,10 +2,10 @@ import React from 'react';
 import { View, Text } from 'react-native';
 
 const AreaPad = () => {
-  const { viewStyle, textStyle } = styles;
+  const { container, textStyle } = styles;
 
   return (
-    <View style={viewStyle}>
+    <View style={container}>
       <Text style={textStyle}>
         Kelantan Selatan
       </Text>
@@ -14,8 +14,8 @@ const AreaPad = () => {
 };
 
 const styles = {
-  viewStyle: {
-    backgroundColor: 'blue',
+  container: {
+    backgroundColor: 'limegreen',
   },
   textStyle: {
     fontSize: 15,

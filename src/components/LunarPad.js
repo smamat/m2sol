@@ -4,7 +4,7 @@ import { View, Text, Image } from 'react-native';
 const LunarPad = () => {
 
   return (
-    <View style={styles.viewStyle}>
+    <View>
       <Image
         source={require('../../assets/wgmoon.jpg')}
         style={styles.imageStyle}
@@ -22,11 +22,6 @@ const styles = {
     fontSize: 12,
     color: 'white',
     textAlign: 'center',
-    marginBottom: 5,
-  },
-  viewStyle: {
-    backgroundColor: 'gray',
-    alignItems: 'center',
   },
   imageStyle: {
     height: 50,

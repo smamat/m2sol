@@ -3,6 +3,9 @@ import { Text, View } from 'react-native';
 import DatePad from './DatePad';
 import AreaPad from './AreaPad';
 import PrayerPad from './PrayerPad';
+import moment from 'moment';
+
+/* global fetch:false */
 
 class JakimPad extends React.Component {
   constructor(props) {
@@ -16,14 +19,15 @@ class JakimPad extends React.Component {
   }
 
   componentWillMount = async () => {
-    const url = 'https://api.azanpro.com/times/today.json?zone=sgr01&format=12-hour';
+    //const url = 'https://api.azanpro.com/times/today.json?zone=sgr01&format=12-hour';
+    const url = 'https://www.e-solat.gov.my/index.php?r=esolatApi/TakwimSolat&period=today&zone=WLY01';
     try {
       const response = await fetch(url);
       const resp = await response.json();
 
       this.setState({ loading: false, resp });
     } catch (e) {
-      console.log('Caught exception: ' + e);
+      console.log(`Caught exception: ${e}`);
       this.setState({ loading: false, error: true });
     }
   }
@@ -48,23 +52,32 @@ class JakimPad extends React.Component {
         <View style={styles.container}>
           <DatePad />
           <AreaPad />
-          //<PrayerPad msg='error'/>
           <Text>Error loading PrayerPad</Text>
         </View>
       );
     }
 
-    console.log('finished loading...')
-    const { subuh, zohor, asar, maghrib, isyak } = resp.prayer_times;
+    console.log('finished loading...');
+    const pt = resp.prayerTime;
+    const { fajr, dhuhr, asr, maghrib, isha, date } = pt[0];
 
-    //console.log('subuh: ' + subuh + ' zohor: ' + zohor);
-    const times = [ subuh, zohor, asar, maghrib, isyak ];
+    // how to format date using moment()
+    //const md = moment(date, 'DD-MMM-YYY').format('DD/MM/YYYY');
+    //console.log('date transformed: ' + md);
+
+    const times = [fajr, dhuhr, asr, maghrib, isha];
 
     return (
       <View style={styles.container}>
+        <View style={{ flex: 1 }}>
         <DatePad />
+        </View>
+        <View style={{ flex: 1 }}>
         <AreaPad />
-        <PrayerPad times={times} />
+        </View>
+        <View style={{ flex: 5 }}>
+          <PrayerPad times={times} />
+        </View>
       </View>
     );
   }
@@ -72,8 +85,8 @@ class JakimPad extends React.Component {
 
 const styles = {
   container: {
-    justifyContent: 'space-between',
     backgroundColor: 'darkgreen',
+    flex: 1,
   },
 };
 

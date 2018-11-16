@@ -15,7 +15,7 @@ const AreaPad = () => {
 
 const styles = {
   container: {
-    backgroundColor: 'limegreen',
+    backgroundColor: 'aqua',
   },
   textStyle: {
     fontSize: 15,

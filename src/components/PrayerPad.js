@@ -9,11 +9,21 @@ const PrayerPad = (props) => {
 
   return (
     <View style={styles.container}>
-      <TimePad waktu='Subuh' time={times[0]} />
-      <TimePad waktu='Zohor' time={times[1]} />
-      <TimePad waktu='Asar' time={times[2]} />
-      <TimePad waktu='Maghrib' time={times[3]} />
-      <TimePad waktu='Isyak' time={times[4]} />
+      <View style={{ flex: 1 }}>
+        <TimePad waktu='Subuh' time={times[0]} />
+      </View>
+      <View style={{ flex: 1 }}>
+        <TimePad waktu='Zohor' time={times[1]} />
+      </View>
+      <View style={{ flex: 1 }}>
+        <TimePad waktu='Asar' time={times[2]} />
+      </View>
+      <View style={{ flex: 1 }}>
+        <TimePad waktu='Maghrib' time={times[3]} />
+      </View>
+      <View style={{ flex: 1 }}>
+        <TimePad waktu='Isyak' time={times[4]} />
+      </View>
     </View>
   );
 };
@@ -21,6 +31,8 @@ const PrayerPad = (props) => {
 const styles = {
   container: {
     backgroundColor: 'mediumseagreen',
+    flex: 1,
   },
 }
+
 export default PrayerPad;

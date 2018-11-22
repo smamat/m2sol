@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
 
+// eslint-disable-line global-require
+
 const LunarPad = () => (
     <View>
       <Image

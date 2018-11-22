@@ -18,9 +18,10 @@ const TimePad = (props) => {
 
 const styles = {
   container: {
-    backgroundColor: 'olive',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    height: 15,
+    fontSize: 20,
   },
 };
 

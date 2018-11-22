@@ -16,10 +16,12 @@ const AreaPad = () => {
 const styles = {
   container: {
     backgroundColor: 'aqua',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
   },
   textStyle: {
     fontSize: 15,
-    textAlign: 'center',
   },
 };
 

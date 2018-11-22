@@ -57,20 +57,23 @@ class JakimPad extends React.Component {
       );
     }
 
-    console.log('finished loading...');
+    //console.log(`finished loading ${resp}`);
+    //console.log(resp);
     const pt = resp.prayerTime;
-    const { fajr, dhuhr, asr, maghrib, isha, date } = pt[0];
+    const { fajr, dhuhr, asr, maghrib, isha, date, hijri } = pt[0];
 
-    // how to format date using moment()
-    //const md = moment(date, 'DD-MMM-YYY').format('DD/MM/YYYY');
-    //console.log('date transformed: ' + md);
+    //how to format date using moment()
+    const gdate = moment(date, 'DD-MMM-YYYY').format('DD/MM/YYYY');
+    const hdate = moment(hijri, 'YYYY-MM-DD').format('DD/MM/YYYY');
+    console.log(`christian date: ${gdate.month()}`);
+    console.log(`muslim date: ${hdate}`);
 
     const times = [fajr, dhuhr, asr, maghrib, isha];
 
     return (
       <View style={styles.container}>
         <View style={{ flex: 1 }}>
-        <DatePad />
+        <DatePad gdate={gdate} hdate={hdate} />
         </View>
         <View style={{ flex: 1 }}>
         <AreaPad />

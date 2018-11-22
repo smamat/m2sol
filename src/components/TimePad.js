@@ -10,8 +10,8 @@ const TimePad = (props) => {
 
   return (
     <View style={styles.container}>
-      <Text>{props.waktu}</Text>
-      <Text>{time}</Text>
+      <Text style={styles.textStyle}>{props.waktu}</Text>
+      <Text style={styles.textStyle}>{time}</Text>
     </View>
   );
 };
@@ -20,8 +20,12 @@ const styles = {
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    height: 15,
+    alignItems: 'center',
+    flex: 1,
+  },
+  textStyle: {
     fontSize: 20,
+    color: 'white',
   },
 };
 

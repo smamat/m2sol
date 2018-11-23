@@ -1,30 +1,23 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import moment from 'moment';
+import imoment from 'moment-hijri';
 
 class DatePad extends Component {
-  //constructor() {
-    //super(props);
-  //}
-
-  /* getHijridate(hdate) {
-    const mm = hdate.substring(3, 5);
-  }*/
+  constructor(props) {
+    super(props);
+    this.state = {
+      gdate: moment().format('DD/MM/YYYY'),
+      hdate: imoment().format('iDD/iMM/iYYYY'),
+    };
+  }
 
   render() {
     const { container, textStyle } = styles;
-    const { gdate, hdate } = this.props;
-
-    console.log("gdate " + gdate);
-    console.log("hdate " + hdate);
-
-    //const md = this.getHijridate(hdate);
-    //console.log('month: ' + hdate.month());
 
     return (
       <View style={container}>
-        <Text style={textStyle}>
-          TBA
-        </Text>
+        <Text style={textStyle}>{this.state.gdate} -- {this.state.hdate}</Text>
       </View>
     );
   }

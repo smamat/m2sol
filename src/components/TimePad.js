@@ -6,7 +6,7 @@ import moment from 'moment';
 const TimePad = (props) => {
   let time = new moment(props.time, 'hh:mm:ss');
   time = time.format('hh:mm a');
-  console.log(`TimePad time: ${time}`);
+  //console.log(`TimePad time: ${time}`);
 
   return (
     <View style={styles.container}>

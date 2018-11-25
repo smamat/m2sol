@@ -1,14 +1,12 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
 
-const AreaPad = () => {
+const AreaPad = (props) => {
   const { container, textStyle } = styles;
 
   return (
     <View style={container}>
-      <Text style={textStyle}>
-        Kelantan Selatan
-      </Text>
+      <Button onPress={props.onPress} title={props.title} />
     </View>
   );
 };

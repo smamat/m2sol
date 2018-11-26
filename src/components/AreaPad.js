@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Button } from 'react-native';
 
 const AreaPad = (props) => {
-  const { container, textStyle } = styles;
+  const { container } = styles;
 
   return (
     <View style={container}>

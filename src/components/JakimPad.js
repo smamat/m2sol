@@ -16,7 +16,7 @@ class JakimPad extends React.Component {
       error: false,
       resp: [],
       area: 'WLY01',
-      areas: ['JHRO1', 'JHR02', 'JHR03', 'JHR04'],
+      areas: ['JHR01', 'JHR02', 'JHR03', 'JHR04'],
       nArea: 0,
     };
   }
@@ -28,7 +28,7 @@ class JakimPad extends React.Component {
     const url = `https://www.e-solat.gov.my/index.php?r=esolatApi/TakwimSolat&period=today&zone=${area}`;
     //const url3 = url2 + area;
 
-    console.log('JakimPad will mount...')
+    console.log('JakimPad will mount...');
     try {
       const response = await fetch(url);
       const resp = await response.json();
@@ -44,6 +44,26 @@ class JakimPad extends React.Component {
     const { areas, nArea } = this.state;
     const n = (nArea + 1) % areas.length;
     this.setState({ nArea: n, area: areas[n] });
+
+    this.fetchData();
+  }
+
+  fetchData = async () => {
+    const { area } = this.state;
+    const url = `https://www.e-solat.gov.my/index.php?r=esolatApi/TakwimSolat&period=today&zone=${area}`;
+
+    this.setState({ loading: true, error: false });
+
+    console.log('fetchData...' + url);
+    try {
+      const response = await fetch(url);
+      const resp = await response.json();
+
+      this.setState({ loading: false, resp });
+    } catch (e) {
+      console.log(`Caught exception in fetchData(): ${e}`);
+      this.setState({ loadin: false, error: true });
+    }
   }
 
   render() {
@@ -81,7 +101,7 @@ class JakimPad extends React.Component {
     // format Gregorian and Hijri dates
     const gdate = moment(date, 'DD-MMM-YYYY').format('DD/MM/YYYY');
     const hdate = moment(hijri, 'YYYY-MM-DD').format('DD/MM/YYYY');
-    
+
     console.log(resp);
 
 
